@@ -118,6 +118,10 @@ class Alunos {
         if (this.alunoSection) {
             listAlunos.removeChild(this.alunoSection);
         }
+
+        if(alunosArray.length >= 1) {
+            viewList.style = "display: none";
+        }
     }
 
     formatarData(data) {
@@ -176,6 +180,10 @@ buttonAdd.addEventListener("click", () => {
         inputTelefoneResponsavel.value = "";
         inputDataNascimento.value = "";
         inputCPF.value = "";
+    }
+
+    if(alunosArray.length >= 1) {
+        viewList.style = "display: block";
     }
 });
 

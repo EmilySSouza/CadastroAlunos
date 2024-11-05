@@ -219,6 +219,10 @@ main #listAlunos .alunoSection p {
     color: #333;
 }
 
+#viewList {
+    display: none;
+}
+
 @keyframes progress {
     from {
         width: 100%;
