@@ -32,7 +32,7 @@ main {
     height: 100vh;
     width: 100vw;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
@@ -74,6 +74,11 @@ input[type=number] {
     appearance: textfield;
 }
 
+input[type="date"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 main #formsAluno button {
     padding: 1.2rem;
     border-radius: 0.8rem;
@@ -82,6 +87,7 @@ main #formsAluno button {
     font-weight: 800;
     border: none;
     cursor: pointer;
+    margin-bottom: 2rem;
 }
 
 main #listAlunos {
@@ -90,8 +96,9 @@ main #listAlunos {
     padding: 2rem;
     max-height: 70rem;
     overflow-y: auto;
-    margin-top: -5rem;
-    display: none;
+    display: flex;
+    flex-direction: column;
+    background-color: beige;
 }
 
 main #listAlunos .alunoSection {
@@ -101,6 +108,7 @@ main #listAlunos .alunoSection {
     margin-bottom: 2rem;
     border-bottom: 2px solid #000;
     padding-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 main #listAlunos .alunoSection:last-child {
@@ -111,6 +119,7 @@ main #listAlunos .alunoSection:last-child {
 main #listAlunos .alunoSection h2 {
     font-size: 3rem;
     text-align: center;
+   
 }
 
 main #listAlunos .alunoSection p {
@@ -171,6 +180,45 @@ main #listAlunos .alunoSection p {
     animation: progress 3s linear forwards;
 }
 
+#popoutListAlunos {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #00000091;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#listAlunos {
+    position: relative; /* Torna o #buttonClose posicionado em relação ao #listAlunos */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 80%;
+}
+
+#buttonClose {
+    position: absolute;
+    top: 5px;
+    right: 5px; /* Move o botão para a esquerda */
+}
+
+#close {
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    border: none;
+    font-size: 35px;
+    cursor: pointer;
+    color: #333;
+}
+
 @keyframes progress {
     from {
         width: 100%;
@@ -195,7 +243,7 @@ main #listAlunos .alunoSection p {
     }
 
     main #formsAluno {
-        margin-top: -3rem;
+        margin-top: -15rem;
     }
 
     main #formsAluno label {
@@ -203,7 +251,7 @@ main #listAlunos .alunoSection p {
         font-weight: 800;
     }
 
-    main #listAlunos {
+    #listAlunos {
         border: 0.2rem solid #ff9100;
         border-radius: 0.5rem;
         padding: 2rem;
@@ -229,5 +277,9 @@ main #listAlunos .alunoSection p {
         font-weight: 600;
         cursor: pointer;
     }
+
+    #popoutListAlunos {
+        margin-top: -8rem;
+    } 
 
 }

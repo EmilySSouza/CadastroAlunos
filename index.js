@@ -5,6 +5,9 @@ const inputEmailResponsavel = document.getElementById("inputEmailResponsavel");
 const inputTelefoneResponsavel = document.getElementById("inputTelefoneResponsavel");
 const inputDataNascimento = document.getElementById("inputDataNascimento");
 const inputCPF = document.getElementById("inputCPF");
+const popoutListAlunos = document.getElementById("popoutListAlunos");
+const viewList = document.getElementById("viewList");
+const close = document.getElementById("close");
 const alunosArray = [];
 
 // Função para validar CPF
@@ -173,10 +176,16 @@ buttonAdd.addEventListener("click", () => {
         inputTelefoneResponsavel.value = "";
         inputDataNascimento.value = "";
         inputCPF.value = "";
-
-        console.log(alunosArray);
     }
 });
+
+viewList.addEventListener("click", () => {
+    popoutListAlunos.style = "display: flex";
+})
+
+close.addEventListener("click", () => {
+    popoutListAlunos.style = "display: none";
+})
 
 function mostrarErro(mensagem) {
     const popOut = document.getElementById("errorPopOut");

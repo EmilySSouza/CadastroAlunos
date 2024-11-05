@@ -7,7 +7,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
     <title>Cadastro de alunos</title>
 </head>
 
@@ -29,6 +31,7 @@
             <label for="">Digite o CPF do aluno</label>
             <input id="inputCPF" type="text">
             <button id="buttonAdd">Adicionar</button>
+            <button id="viewList">Ver Lista de alunos</button>
         </section>
 
         <section id="errorPopOut" class="pop-out hidden">
@@ -36,8 +39,15 @@
             <div class="progress-bar"></div>
         </section>
 
-        <section id="listAlunos">
-        </section>
+        <aside id="popoutListAlunos">
+            <section id="listAlunos">
+                <div id="buttonClose">
+                    <button id="close">&times;</button>
+                </div>
+            </section>
+        </aside>
+
+        <section id="overlay" class="hidden"></section>
     </main>
     <script src="index.js"></script>
 </body>
