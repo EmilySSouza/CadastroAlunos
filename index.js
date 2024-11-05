@@ -7,6 +7,53 @@ const inputDataNascimento = document.getElementById("inputDataNascimento");
 const inputCPF = document.getElementById("inputCPF");
 const alunosArray = [];
 
+// Função para validar CPF
+function validarCPF(cpf) {
+    cpf = cpf.replace(/[^\d]+/g, '');
+
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+        return false;
+    }
+
+    const calcularDigito = (cpf, peso) => {
+        let soma = 0;
+        for (let i = 0; i < peso - 1; i++) {
+            soma += parseInt(cpf.charAt(i)) * (peso - i);
+        }
+        let digito = (soma * 10) % 11;
+        return digito === 10 ? 0 : digito;
+    };
+
+    const primeiroDigito = calcularDigito(cpf, 10);
+    const segundoDigito = calcularDigito(cpf, 11);
+
+    return primeiroDigito === parseInt(cpf.charAt(9)) && segundoDigito === parseInt(cpf.charAt(10));
+}
+
+// Função para validar o email
+function validarEmail(email) {
+    const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return regex.test(email);
+}
+
+// Função para validar o telefone (11 dígitos)
+function validarTelefone(telefone) {
+    const regex = /^\d{11}$/;
+    return regex.test(telefone);
+}
+
+// Função para validar a idade mínima de 5 anos
+function validarDataNascimento(data) {
+    const hoje = new Date();
+    const dataNasc = new Date(data);
+    const idade = hoje.getFullYear() - dataNasc.getFullYear();
+    return idade >= 5;
+}
+
+function cpfJaExiste(cpf) {
+    return alunosArray.some(aluno => aluno.cpfAluno === cpf);
+}
+
 class Alunos {
     constructor(nomeAluno, emailResponsavel, telefoneResponsavel, dataNascimento, cpfAluno) {
         this.nomeAluno = nomeAluno;
@@ -83,6 +130,38 @@ buttonAdd.addEventListener("click", () => {
     const dataNascimentoDoAluno = inputDataNascimento.value;
     const cpfDoAluno = inputCPF.value;
 
+    if (!nomeAluno || !emailDoResponsavel || !telefoneDoResponsavel || !dataNascimentoDoAluno || !cpfDoAluno) {
+        mostrarErro("❗ Por favor, preencha todos os campos ❗");
+        return;
+    }
+
+    if (!validarCPF(cpfDoAluno)) {
+        mostrarErro("❗ CPF inválido ❗");
+        return;
+    }
+
+    if (cpfJaExiste(cpfDoAluno)) {
+        mostrarErro("Esse CPF já foi cadastrado.");
+        return;
+    }
+
+    if (!validarEmail(emailDoResponsavel)) {
+        mostrarErro("❗ Email do responsável inválido ❗");
+        return;
+    }
+
+    if (!validarTelefone(telefoneDoResponsavel)) {
+        mostrarErro("❗ Telefone do responsável inválido. Insira um número com 11 dígitos ❗");
+        return;
+    }
+
+    if (!validarDataNascimento(dataNascimentoDoAluno)) {
+        mostrarErro("❗ Data de nascimento inválida. O aluno deve ter pelo menos 5 anos ❗");
+        return;
+    }
+
+    listAlunos.style = "display: flex";
+
     if (nomeAluno && emailDoResponsavel && telefoneDoResponsavel && dataNascimentoDoAluno && cpfDoAluno) {
         const novoAluno = new Alunos(nomeAluno, emailDoResponsavel, telefoneDoResponsavel, dataNascimentoDoAluno, cpfDoAluno);
         alunosArray.push(novoAluno);
@@ -98,3 +177,29 @@ buttonAdd.addEventListener("click", () => {
         console.log(alunosArray);
     }
 });
+
+function mostrarErro(mensagem) {
+    const popOut = document.getElementById("errorPopOut");
+    const errorMessage = document.getElementById("errorMessage");
+    const progressBar = document.querySelector(".progress-bar");
+
+    // Define a mensagem e exibe o pop-out
+    errorMessage.textContent = mensagem;
+    popOut.classList.remove("hidden");
+    popOut.classList.add("show");
+
+    // Reinicia a animação da barra de progresso
+    progressBar.style.animation = "none";
+    requestAnimationFrame(() => {
+        progressBar.style.animation = "";
+        progressBar.style.animation = "progress 3s linear forwards";
+    });
+
+    // Oculta o pop-out após 3 segundos
+    setTimeout(() => {
+        popOut.classList.remove("show");
+        setTimeout(() => {
+            popOut.classList.add("hidden");
+        }, 300); // Espera a transição terminar antes de ocultar completamente
+    }, 3000);
+}

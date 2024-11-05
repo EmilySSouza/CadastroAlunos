@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Cadastro de alunos</title>
 </head>
+
 <body>
     <header>
         <h1>Cadastro de alunos</h1>
@@ -26,9 +28,15 @@
             <button id="buttonAdd">Adicionar</button>
         </section>
 
+        <section id="errorPopOut" class="pop-out hidden">
+            <span id="errorMessage"></span>
+            <div class="progress-bar"></div>
+        </section>
+
         <section id="listAlunos">
         </section>
     </main>
     <script src="index.js"></script>
 </body>
+
 </html>
