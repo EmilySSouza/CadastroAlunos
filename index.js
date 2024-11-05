@@ -4,14 +4,16 @@ const listAlunos = document.getElementById("listAlunos");
 const inputEmailResponsavel = document.getElementById("inputEmailResponsavel");
 const inputTelefoneResponsavel = document.getElementById("inputTelefoneResponsavel");
 const inputDataNascimento = document.getElementById("inputDataNascimento");
+const inputCPF = document.getElementById("inputCPF");
 const alunosArray = [];
 
 class Alunos {
-    constructor(nomeAluno, emailResponsavel, telefoneResponsavel, dataNascimento) {
+    constructor(nomeAluno, emailResponsavel, telefoneResponsavel, dataNascimento, cpfAluno) {
         this.nomeAluno = nomeAluno;
         this.emailResponsavel = emailResponsavel;
         this.telefoneResponsavel = telefoneResponsavel;
         this.dataNascimento = dataNascimento;
+        this.cpfAluno = cpfAluno;
         this.alunoSection = null;
     }
 
@@ -25,7 +27,8 @@ class Alunos {
             <p class="nomeEmailResponsavel">Email do responsável: ${this.emailResponsavel}</p>
             <p class="nomeTelefoneResponsavel">Telefone do responsável: ${this.telefoneResponsavel}</p>
             <p class="dataNascimento">Data nascimento do aluno: ${this.formatarData(this.dataNascimento)}</p>
-            
+            <p class="cpfAluno">CPF do aluno: ${this.cpfAluno}</p>
+
             <button class="edit">Editar</button>
             <button class="remove">Remover</button>
         `;
@@ -78,9 +81,10 @@ buttonAdd.addEventListener("click", () => {
     const emailDoResponsavel = inputEmailResponsavel.value;
     const telefoneDoResponsavel = inputTelefoneResponsavel.value;
     const dataNascimentoDoAluno = inputDataNascimento.value;
+    const cpfDoAluno = inputCPF.value;
 
-    if (nomeAluno && emailDoResponsavel && telefoneDoResponsavel && dataNascimentoDoAluno) {
-        const novoAluno = new Alunos(nomeAluno, emailDoResponsavel, telefoneDoResponsavel, dataNascimentoDoAluno);
+    if (nomeAluno && emailDoResponsavel && telefoneDoResponsavel && dataNascimentoDoAluno && cpfDoAluno) {
+        const novoAluno = new Alunos(nomeAluno, emailDoResponsavel, telefoneDoResponsavel, dataNascimentoDoAluno, cpfDoAluno);
         alunosArray.push(novoAluno);
 
         novoAluno.exibirAluno();
@@ -89,6 +93,7 @@ buttonAdd.addEventListener("click", () => {
         inputEmailResponsavel.value = "";
         inputTelefoneResponsavel.value = "";
         inputDataNascimento.value = "";
+        inputCPF.value = "";
 
         console.log(alunosArray);
     }

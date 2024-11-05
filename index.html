@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Cadastro de alunos</title>
 </head>
 <body>
@@ -11,20 +12,21 @@
     </header>
 
     <main>
-        <section>
+        <section id="formsAluno">
             <label for="">Digite o nome do aluno:</label>
             <input id="inputNome" type="text">
             <label for="">Digite o email do responsável:</label>
             <input id="inputEmailResponsavel" type="text">
             <label for="">Digite o telefone do responsável:</label>
-            <input id="inputTelefoneResponsavel" type="text">
+            <input id="inputTelefoneResponsavel" type="number">
             <label for="">Digite a data de nascimento do aluno:</label>
             <input id="inputDataNascimento" type="date">
+            <label for="">Digite o CPF do aluno</label>
+            <input id="inputCPF" type="text">
             <button id="buttonAdd">Adicionar</button>
         </section>
 
         <section id="listAlunos">
-
         </section>
     </main>
     <script src="index.js"></script>

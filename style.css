@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+header {
+    background-color: #242222;
+    color: white;
+    text-align: center;
+    padding-block: 1.6rem;
+    height: 100%;
+    width: 100%;
+}
+
+header h1 {
+    font-size: 3.6rem;
+}
+
+main {
+    background-color: beige;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main #formsAluno {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+main #formsAluno label {
+    font-size: 2.4rem;
+    font-weight: 800;
+}
+
+main #formsAluno input {
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    border: 0.2rem solid #ff9100;
+}
+
+input #inputDataNascimento {
+    cursor: pointer;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+main #formsAluno button {
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    background-color: #ff9100;
+    font-size: 1.6rem;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+}
+
+main #listAlunos {
+    border: 0.2rem solid #ff9100;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    max-height: 70rem;
+    overflow-y: auto;
+    margin-top: -5rem;
+}
+
+main #listAlunos .alunoSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #000;
+    padding-bottom: 2rem;
+}
+
+main #listAlunos .alunoSection:last-child {
+    border-bottom: none;
+    padding-bottom: 0rem;
+}
+
+main #listAlunos .alunoSection h2 {
+    font-size: 3rem;
+}
+
+main #listAlunos .alunoSection p {
+    font-size: 2rem;
+}
+
+.alunoSection button {
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: 0.2rem solid black;
+    font-size: 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.alunoSection button.edit {
+    background-color: #73bb00;
+}
+
+.alunoSection button.remove {
+    background-color: #ff5e00;
+}
+
+#listAlunos::-webkit-scrollbar-thumb:hover {
+    background-color: #ff5e00; /* Cor ao passar o mouse */
+}
+
+#listAlunos {
+    scrollbar-width: auto;
+    scrollbar-color: #ff9100 #f1f1f1;
+}
