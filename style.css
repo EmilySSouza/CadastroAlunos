@@ -37,10 +37,15 @@ main {
     align-items: center;
 }
 
+html, button, input {
+    font-family: "Roboto", sans-serif;
+}
+
 main #formsAluno {
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin-top: -8rem;
 }
 
 main #formsAluno label {
@@ -105,6 +110,7 @@ main #listAlunos .alunoSection:last-child {
 
 main #listAlunos .alunoSection h2 {
     font-size: 3rem;
+    text-align: center;
 }
 
 main #listAlunos .alunoSection p {
@@ -178,6 +184,50 @@ main #listAlunos .alunoSection p {
     opacity: 1;
     transform: translateX(0);
 }
+
 .hidden {
     display: none;
+}
+
+@media (max-width: 950px) {
+    main {
+        flex-direction: column;
+    }
+
+    main #formsAluno {
+        margin-top: -3rem;
+    }
+
+    main #formsAluno label {
+        font-size: 1.6rem;
+        font-weight: 800;
+    }
+
+    main #listAlunos {
+        border: 0.2rem solid #ff9100;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        max-height: 30rem;
+        overflow-y: auto;
+        display: none;
+        margin-bottom: 4rem;
+    }
+    
+    main #listAlunos .alunoSection h2 {
+        font-size: 2.4rem;
+    }
+    
+    main #listAlunos .alunoSection p {
+        font-size: 1.6rem;
+    }
+    
+    .alunoSection button {
+        padding: 0.4rem;
+        border-radius: 0.5rem;
+        border: 0.2rem solid black;
+        font-size: 1.6rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
 }
